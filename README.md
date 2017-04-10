@@ -8,13 +8,13 @@ Verify signed HTTP requests from Manifold
 
 ## Install
 
-```
-npm install @manifoldco/signature
+```bash
+$ npm install @manifoldco/signature
 ```
 
 ## Usage
 
-```
+```js
 var Verifier = require('@manifoldco/signature').Verifier;
 var verifier = new Verifier();
 
@@ -43,7 +43,7 @@ verifier.test(request, function(err) {
 
 ### Express
 
-```
+```js
 var verifier = require('@manifoldco/signature').express;
 
 // When using an existing body parser, we require you to add a verify step
