@@ -3,6 +3,7 @@ language: node_js
 branches:
   only:
   - master
+  - "/^v([0-9]+)\\.([0-9]+)\\.([0-9]+)(?:\\-[0-9]+)?$/"
 node_js:
 - 4
 - 6
@@ -12,12 +13,6 @@ cache:
   - $HOME/.npm
 env:
 - CXX=g++-4.8
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - g++-4.8
 notifications:
   slack:
     secure: juLV1VV5GosvL9hEW5Sr0bqDgWnm24VfjhGVt8slad5ObdGoebCmheb4GdkBP+yArtnA0XeV+W76ROeVlmOaUSlgIXPuI3aiKBvDM7mCtfH5hHjngEknITN8jcSRh7lp4K5cDo8kHcFghy+F+VFD777HStPG20wFQ6m7CSWjvVq/0Me+hfZ8UvKZU8KKMaWsQwEqm3KdjlqDKSzdd/sP7FxhetPdQYYYl5YucFLfwB9TJfurFcu4fvS4UF3P3PcRe5hcnMh9nI7GHDXXDSpSsR5cSgMtFKzKa/HrwiBLUObEXYNk6Ui4g2AA9nJ5uFPDRK3u6bKriIW5PlYubLkwGmgSaQpHAaesLOgfnNoo/eHuvjc5L/IqLum7coC0F/gFgUuG+OVJ5wVWJY/EKEMSkdT8mMBAuK+Qd3yUdKcEoF7bZRveJwR1aPvHxLPqbzo64RKrdIA656Buh4PGZV2mBYRLEb95N+kQ2DgPqWzDxPhg5TxMi5OBGe2uQPJ+29u+x5tQzZCgFnbcs9W9Gg8PK65NfX1vQGh8T8KUCrYF8x2oG6uyplLxvp02ptinr+d4O49YL8GE9xyHbxuTKyeFGvoIY2kRG4kZIBjOKF86j7n/0qPOtOgMl1LvqtCMCgcsdOk1RI6JlB1LlkPzdEQvBgJ+amcqDxoRFdBKic74gdA=
