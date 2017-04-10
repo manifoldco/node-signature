@@ -6,6 +6,9 @@
   "repository": "git@github.com:manifoldco/node-signature.git",
   "author": "Jeff Andersen <@jeffandersen>",
   "license": "BSD-3-Clause",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "npm run jshint && npm run test:all",
     "test:all": "mocha -R spec 'test/integration/**/*.js'",
