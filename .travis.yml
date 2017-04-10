@@ -24,5 +24,4 @@ deploy:
     secure: WC/iPKo4f8UiPxWa79HXZKAfFCZOAeWzkrrF2z/QoshWYqmZXOqnoYtFPezsfNn2fGJ7W6suo/QOFTalFevi97jSX11lIgNcmrAVPHDJBRWY3ZOykQ69xkvoy+1XiOUXHVxfTY8vhbN++4G1AP+GK2hoVe+BO+XYZV49+SW4yFIKIJHN1GhCbAKNlUOcw0yfnaOrBe98fEJtdXW1cRzEpzslRfgUxyA45818dtIGqOxwvNPqLioGSFXs9t2gV3c6dp0te0ggVF24t7G5CoWBwuUwIsZPZC5Xevgv8SZSiY2ILLpIeL9SWo8wLHSZBBXMF6tZSl5XfHncOcQOzrtCf09oOsk1HD6SdupYor51KjqhFQSKGilBu1WNsN0pNn9R9yT86uTFbNBV8xi0wjBgc7wlYNfWpEoQ+G5wwDxysEgTpmkOKDvEp0B7ROCbBzxXeDwiJTJR0KTYQ+AYCZ4ndrZjKLHYrQG4E997yLXfMdA4J+2qpyv6CBsxwmVfiEv2cwubX6a5rpFipzcIhdYJqix9FwmtOLPCfTinap2i12+Np4uowXlymdU9yc60GHorjJy5AZTc1IYhDNTaKF/xYSG4sl76w9qc+fimppVwdGhncC3e41O7KQ8k9jG6GaPvsvrKiEaJELAjLtkKwi1KO4veEfCTFdxjf46JmQRIIU0=
   on:
     tags: true
-    condition: $TRAVIS_BRANCH =~ '^v([0-9]+)\.([0-9]+)\.([0-9]+)(?:\-[0-9]+)?$'
     repo: manifoldco/node-signature
