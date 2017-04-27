@@ -48,8 +48,8 @@ var Verifier = require('@manifoldco/signature').Verifier;
 var verifier = new Verifier();
 
 // The verification library expects that the req.rawBody property
-// exists so that the body dAoes not have to be read twice, this can be
-// done automaticall with restify-plugins bodyParser
+// exists so that the body does not have to be read twice, this can be
+// done automatically with restify-plugins bodyParser
 app.use(plugins.bodyParser({ mapParams: true }));
 
 // Applying the verifier middleware with default master key and options (recommended)
