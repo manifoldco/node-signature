@@ -13,22 +13,34 @@ var TEST_MASTER_KEY = 'jj4tA4PDmEhYGBkUNwvfNzMW703D9nRGtp4U9S5b5nM';
 bootstrap.TEST_MASTER_KEY = TEST_MASTER_KEY;
 
 bootstrap.createHttpServer = function(verifier, done, cb) {
+  var bp = bodyParser.json({
+    verify: function(req, res, buf) {
+      req.rawBody = buf;
+    },
+  });
+
   // Test server instance
   var server = http.createServer(function(req, res) {
-
     // Run the verifier on the inbound request
-    return verifier.test(req)
-    .then(function() {
-      // If it succeeds, end the request
-      // status=200
-      req.resume();
-      res.end();
-    })
-    .catch(function(err) {
-      // If it fails, return the message
-      // status=400|401
-      res.statusCode = err.statusCode;
-      res.end(err.reason);
+    return bp(req, res, function(err) {
+      if (err) {
+        res.statusCode = 500;
+        return res.end();
+      }
+
+      verifier.test(req)
+        .then(function() {
+          // If it succeeds, end the request
+          // status=200
+          req.resume();
+          res.end();
+        })
+        .catch(function(err) {
+          // If it fails, return the message
+          // status=400|401
+          res.statusCode = err.statusCode;
+          res.end(err.reason);
+        });
     });
   });
 
