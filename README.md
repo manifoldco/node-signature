@@ -19,7 +19,7 @@ var Verifier = require('@manifoldco/signature').Verifier;
 var verifier = new Verifier();
 
 // Using the promise interface
-verifier.test(request).then(function() {
+verifier.test(req, req.rawBody).then(function() {
   // Accept and handle request
 }).catch(function(err) {
   // Deny request on error
@@ -29,7 +29,7 @@ verifier.test(request).then(function() {
 });
 
 // Using the callback interface
-verifier.test(request, function(err) {
+verifier.test(req, req.rawBody, function(err) {
   if (err) {
     // Deny request on error
     res.statusCode = err.statusCode || 500;
@@ -38,6 +38,31 @@ verifier.test(request, function(err) {
   }
 
   // Accept and handle request
+});
+```
+
+### Restify
+
+```js
+var Verifier = require('@manifoldco/signature').Verifier;
+var verifier = new Verifier();
+
+// The verification library expects that the req.rawBody property
+// exists so that the body dAoes not have to be read twice, this can be
+// done automaticall with restify-plugins bodyParser
+app.use(plugins.bodyParser({ mapParams: true }));
+
+// Applying the verifier middleware with default master key and options (recommended)
+app.use(function(req, res, next) {
+  verifier.test(req).then(function() {
+  // Accept and handle request
+    next();
+  }).catch(function(err) {
+    // Deny request on error
+    res.statusCode = err.statusCode || 500;
+    // Respond with JSON, including a message property
+    return res.json({ message: err.message });
+  });
 });
 ```
 
@@ -53,13 +78,4 @@ app.use(bodyParser.json({ verify: verifier.appendRawBody }));
 
 // Applying the verifier middleware with default master key and options (recommended)
 app.use(verifier.middleware());
-
-// Using all available options
-app.use(verifier.middleware({
-  // If autoRespond false, user must inspect req[resultKey]
-  // before handling the request and respond accordingly
-  autoRespond: false, // default: true
-  resultKey: 'sigError', // default: manifoldInvalidSignature
-  masterKey: 'user-supplied-master-key',
-});
 ```

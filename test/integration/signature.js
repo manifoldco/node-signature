@@ -40,8 +40,8 @@ describe('signature verification', function() {
       bootstrap.sendRequest(mocks.invalidSignature, function(err, res, body) {
         server.close();
         assert.equal(err, null);
-        assert.strictEqual(res.statusCode, 400);
-        assert.strictEqual(body, 'invalid signature size', 'Incorrect error reason');
+        assert.strictEqual(res.statusCode, 401);
+        assert.strictEqual(body, 'invalid signature', 'Incorrect error reason');
         done();
       });
     });

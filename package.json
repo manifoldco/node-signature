@@ -21,10 +21,10 @@
   "dependencies": {
     "base64url": "^2.0.0",
     "ed25519": "^0.0.4",
-    "es6-promise": "^4.1.0",
-    "raw-body": "^2.2.0"
+    "es6-promise": "^4.1.0"
   },
   "devDependencies": {
+    "raw-body": "^2.2.0",
     "assert": "^1.4.1",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",

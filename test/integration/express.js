@@ -38,8 +38,8 @@ describe('express middleware', function() {
   it('rejects a request due to invalid signature header', function(done) {
     bootstrap.sendRequest(mocks.invalidSignature, function(err, res, body) {
       assert.equal(err, null);
-      assert.strictEqual(res.statusCode, 400);
-      assert.strictEqual(body, 'invalid signature size', 'Incorrect error reason');
+      assert.strictEqual(res.statusCode, 401);
+      assert.strictEqual(body, 'invalid signature', 'Incorrect error reason');
       done();
     });
   });
@@ -65,7 +65,7 @@ describe('express middleware', function() {
   it('rejects a request due to missing headers', function(done) {
     bootstrap.sendRequest(mocks.invalidSignature, function(err, res) {
       assert.equal(err, null);
-      assert.strictEqual(res.statusCode, 400);
+      assert.strictEqual(res.statusCode, 401);
       done();
     });
   });
