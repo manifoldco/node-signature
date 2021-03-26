@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "base64url": "^2.0.0",
-    "ed25519": "^0.0.4",
+    "ed25519": "^0.0.5",
     "es6-promise": "^4.1.0"
   },
   "devDependencies": {
