@@ -1,22 +1,27 @@
 {
-  "name": "@manifoldco/signature",
+  "name": "@answerbook/manifold-signature",
   "version": "1.1.0",
   "description": "Verify signed HTTP requests from Manifold",
   "main": "index.js",
-  "repository": "git@github.com:manifoldco/node-signature.git",
   "author": "Jeff Andersen <@jeffandersen>",
   "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/answerbook/manifold-signature"
+  },
+  "homepage": "https://github.com/answerbook/manifold-signature",
+  "bugs": {
+    "url": "https://github.com/answerbook/manifold-signature/issues"
+  },
   "publishConfig": {
-    "access": "public"
+    "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
     "test": "npm run jshint && npm run test:all",
-    "test:all": "mocha -R spec 'test/integration/**/*.js'",
+    "test:all": "mocha -R xunit 'test/integration/**/*.js'",
     "test:watch": "mocha -R spec --watch 'test/integration/**/*.js'",
-    "jshint": "jshint ."
-  },
-  "engines": {
-    "node": ">=4.4.6"
+    "jshint": "jshint .",
+    "release": "semantic-release"
   },
   "dependencies": {
     "base64url": "^2.0.0",
@@ -24,13 +29,15 @@
     "es6-promise": "^4.1.0"
   },
   "devDependencies": {
-    "raw-body": "^2.2.0",
+    "@answerbook/release-config-npm": "^1.0.11",
     "assert": "^1.4.1",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
     "node-mocks-http": "^1.6.1",
+    "raw-body": "^2.2.0",
+    "semantic-release": "^17.4.2",
     "sinon": "^2.1.0"
   }
 }
